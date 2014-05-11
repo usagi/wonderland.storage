@@ -16,6 +16,10 @@ R/W storage wrapper C++ header-only library for PC-native and Web (Emscripten) d
 - for Web
     - em++-1.16.0 (Emscripten)
 
+## Example
+
+- [example-1](example/example-1/main.cxx)
+
 ## Features
 
 in `wonder_rabbit_project::wonderland::storage` namespace free functions:
@@ -35,10 +39,6 @@ in `wonder_rabbit_project::wonderland::storage` namespace free functions:
     - call `const auto something2 = load< float >( "something-2.data" );`
         - PC : read raw binary byte sequence data and return restored `float` type value
         - Web: read text data encoded by BASE64 with raw binary byte sequence data and return restored `float` type value.
-
-## Example
-
-- [example-1](example/example-1/main.cxx)
 
 ## Dependency
 
