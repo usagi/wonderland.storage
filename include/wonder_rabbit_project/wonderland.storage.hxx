@@ -108,6 +108,8 @@ namespace wonder_rabbit_project
         asm_code += path;
         asm_code += "' );";
         std::string buffer = emscripten_run_script_string( asm_code.data() );
+        if ( buffer == "null" )
+          throw std::ios_base::failure("file not found(on the Web Local Storage)");
         buffer = base64_helper::base64_decode( buffer );
 #endif
         return buffer;
