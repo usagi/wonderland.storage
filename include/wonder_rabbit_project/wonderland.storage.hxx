@@ -29,12 +29,16 @@ namespace wonder_rabbit_project
         const auto base64_data = base64_helper::base64_encode( data );
         // Emscripten: Web Storage
         std::string asm_code;
+        asm_code += "try {";
         asm_code += "localStorage.setItem( '";
         asm_code += path;
         asm_code += "', '";
         asm_code += base64_data;
         asm_code += "' );";
-        emscripten_run_script( asm_code.data() );
+        asm_code += "} catch ( e ) { 1; } 0;";
+        const auto result = emscripten_run_script_int( asm_code.data() );
+        if ( result != 0 )
+          throw std::ios_base::failure("fail writing(on the Web Local Storage)");
 #endif
         
       }
