@@ -119,6 +119,14 @@ namespace wonder_rabbit_project
         return buffer;
       }
       
+      template < >
+      auto load< std::vector< std::uint8_t > > ( const std::string& path )
+        -> std::vector< std::uint8_t >
+      {
+        const auto buffer = load< std::string >( path );
+        return { buffer.cbegin(), buffer.cend() };
+      }
+      
     }
   }
 }
